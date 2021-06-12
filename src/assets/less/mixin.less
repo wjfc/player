@@ -1,0 +1,53 @@
+// 子路由需要全屏展示的时候 page 的样式
+.childrenPage {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: @color-app-backgroud;
+  // overflow: scroll;
+}
+
+// 小图标的大小
+.littleIconSize {
+  width: 16px;
+  height: 16px;
+}
+
+// 卡片样式
+.cardStyle {
+  border-radius: 4px;
+  background: white;
+}
+
+// 列表卡片底部时间，点赞，浏览量文本的字号大小和颜色
+.cardBottomTextSizeColor {
+  font-size: 11px;
+  font-weight: 450;
+  color: @color-desc;
+}
+
+// flex 居中两边对齐
+.alignCenterAndSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+// <i class="line-gap"></i>
+.line-gap {
+  width: 100%;
+  height: 12px;
+  background: #f7f7f7;
+}
+
+.mb12 {
+  margin-bottom: 12px;
+}
+
+.cardMargin {
+  margin: @area-margin-top @area-margin-left-right 0px @area-margin-left-right;
+}
+
