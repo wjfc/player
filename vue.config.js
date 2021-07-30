@@ -3,16 +3,12 @@ const autoprefixer = require("autoprefixer");
 const pxtoviewport = require("postcss-px-to-viewport");
 module.exports = {
   publicPath: "./",
-  outputDir: "dist/vue-project-template",   // 修改成对应的项目名
+  outputDir: "dist/wmsj-cloud-pc", 
   css: {
     loaderOptions: {
       less: {
         lessOptions: {
           modifyVars: {
-            // // 直接覆盖变量
-            // 'tabs-nav-background-color': 'red',
-            // 或者可以通过 less 文件覆盖（文件路径为绝对路径）覆盖掉 vant 里面的组件变量
-            hack: `true; @import "/src/assets/less/modifyVantVars.less";`,
           }
         }
       },
@@ -20,7 +16,8 @@ module.exports = {
         plugins: [
           autoprefixer(),
           pxtoviewport({
-            viewportWidth: 375
+            viewportWidth: 1920,
+            unitToConvert: 'PX',
           })
         ]
       }
@@ -29,7 +26,7 @@ module.exports = {
   devServer: {
     open: true,
     proxy: {        // 根据实际项目做接口代理
-      "/volunteers": {
+      "/wenming": {
         target: "http://112.74.114.37:8023/",
         changeOrigin: true
       },
