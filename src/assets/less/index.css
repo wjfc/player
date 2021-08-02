@@ -1,0 +1,68 @@
+.childrenPage {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #F7F7F7;
+}
+.littleIconSize {
+  width: 16px;
+  height: 16px;
+}
+.cardStyle {
+  border-radius: 4px;
+  background: white;
+}
+.cardBottomTextSizeColor {
+  font-size: 11px;
+  font-weight: 450;
+  color: #9A9A9A;
+}
+.alignCenterAndSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.line-gap {
+  width: 100%;
+  height: 12px;
+  background: #f7f7f7;
+}
+.mb12 {
+  margin-bottom: 12px;
+}
+.cardMargin {
+  margin: 16px 12px 0px 12px;
+}
+.baseline-divider {
+  font-size: 9px;
+  color: #C8C9CC;
+  border-color: #C8C9CC;
+  padding: 0px 12px;
+}
+.margin-top-12 {
+  margin-top: 12px;
+}
+.no-content-conatiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 46px - 72px);
+}
+.no-content-conatiner .no-content-wrap {
+  display: flex;
+  flex-direction: column;
+}
+.no-content-conatiner .no-content-wrap img {
+  display: block;
+  width: 230px;
+  height: 171px;
+}
+.no-content-conatiner .no-content-wrap div {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 16px;
+  color: #969799;
+}

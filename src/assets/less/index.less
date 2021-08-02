@@ -1,10 +1,40 @@
 @import './variable.less';
 @import './mixin.less';
 
-// 背景图标
-@img: "~@/assets/images";
+// 到达我的底线啦 
+.baseline-divider {
+  font-size: 9px;
+  color: #C8C9CC;
+  border-color: #C8C9CC;
+  padding: 0px 12px;
+}
 
-.bg(@bg) {
-  background: url(@bg) no-repeat center center;
-  background-size: 100% 100%;
+.margin-top-12 {
+  margin-top: 12px;
+}
+
+// 无内容占位图
+.no-content-conatiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 46px - 72px);
+
+  .no-content-wrap {
+    display: flex;
+    flex-direction: column;
+
+    img {
+      display: block;
+      width: 230px;
+      height: 171px;
+    }
+
+    div {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 16px;
+      color: #969799;
+    }
+  }
 }
