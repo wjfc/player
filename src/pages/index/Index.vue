@@ -2,6 +2,7 @@
   <div class="page">
     <div class="page-top">
       <div class="play-container"  v-show="isRemoting">
+        <div class="area-info">{{ areaInfo }}</div>
         <CommonWebRtcPlayer
           v-if="playUrl && isRemoting"
           :playUrl="playUrl"
@@ -47,6 +48,8 @@ export default {
       isRemoting: false,
       sn: "",
       playUrl: "",
+      areaList: [],
+      areaInfo: ""
     };
   },
 
@@ -123,6 +126,7 @@ export default {
         if (type === "open") {
           this.isRemoting = true;
           this.playUrl = playUrl;
+          this.upDateAreaInfo();
         } else if (type === "close") {
           this.isRemoting = false;
           this.playUrl = "";
@@ -142,10 +146,26 @@ export default {
       this.playUrl = "";
     },
 
-    handleClick(SN) {
+    upDateAreaInfo() {
+      console.log(this.areaList, this.sn)
+      for (let i = 0; i < this.areaList.length; i++) {
+        let parent = this.areaList[i];
+        for ( let j = 0; j < parent.children.length; j++) {
+          let area = parent.children[j];
+          if (this.sn == area.SN) {
+            this.areaInfo = parent.label + ">" + area.label;
+          }
+        }
+      }
+    },
+
+    handleClick(SN, areaList) {
       if (SN) {
         this.sn = SN;
         this.initMqtt();
+      } 
+      if (areaList && this.areaList.length < 1) {
+        this.areaList = areaList;
       }
     },
   },
@@ -167,9 +187,18 @@ export default {
     width: 100%;
 
     .play-container {
+      position: relative;
       margin: 0 auto;
       width: 1338px;
       height: 780px;
+
+      .area-info {
+        position: absolute;
+        width: 100%;
+        left: 16px;
+        top: -42px;
+        font-size: 26px;
+      }
     }
     .close {
       position: absolute;

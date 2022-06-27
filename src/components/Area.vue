@@ -25,7 +25,7 @@
           error: !item2.live,
         }"
         :key="item2.value"
-        @click="handleLiveClick(i, item2)"
+        @click="handleLiveClick(i, item2, areaList)"
       >
         {{ item2.label }}
       </div>
@@ -122,7 +122,7 @@ export default {
         });
       });
       this.areaList = areaJson;
-      this.handleLiveClick(0, this.areaList[0].children[0]);
+      this.handleLiveClick(0, this.areaList[0].children[0], this.areaList);
     },
 
     updatAreaListLiveStatus() {
@@ -160,9 +160,9 @@ export default {
       this.liveActive = -1;
     },
 
-    handleLiveClick(i, item) {
+    handleLiveClick(i, item, areaList) {
       this.liveActive = i;
-      this.$emit("handleClick",item.SN);
+      this.$emit("handleClick",item.SN, areaList);
     },
   },
 };
