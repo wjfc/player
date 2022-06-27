@@ -159,8 +159,8 @@ export default {
   padding-top: 51px;
   width: 100%;
   height: 100%;
-  background: url("~@/assets/bg.png") no-repeat;
-  background-size: 100% 100%;
+  // background: url("~@/assets/bg.png") no-repeat;
+  // background-size: 100% 100%;
   overflow: hidden;
 
  /deep/ .page-top {

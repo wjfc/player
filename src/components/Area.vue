@@ -192,7 +192,8 @@ export default {
       text-align: center;
       line-height: 68px;
       font-size: 36px;
-      background: url("~@/assets/images/city.png");
+      background-image: url("~@/assets/images/city.png");
+      background-size: 100% 100%;
       color: rgba(255, 255, 255, 0.5);
       overflow: hidden;
       white-space: nowrap;
@@ -202,7 +203,7 @@ export default {
       }
 
       &.active {
-        background: url("~@/assets/images/city-focus.png");
+        background-image: url("~@/assets/images/city-focus.png");
         color: rgba(255, 255, 255, 1);
       }
     }
