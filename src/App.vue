@@ -1,52 +1,45 @@
 <template>
   <div id="app">
-    <router-view />
+     <CommonScreenScale>
+      <router-view />
+    </CommonScreenScale>
   </div>
 </template>
 
 <script>
-import { setWechatInfo } from "@/utils/localStorage";
-import { getUrlParam } from "@/utils/utils";
+import CommonScreenScale from "@/components/common/CommonScreenScale.vue";
 
 export default {
+  components: {
+    CommonScreenScale
+  },
+
   data() {
     return {};
   },
 
   created() {
-    this.initWeiXinJSSDK();
-    this.storeWechatInfo();
+   
   },
 
+  mounted() {},
+
   methods: {
-    // 存储微信用户信息
-    storeWechatInfo() {
-      const headimgurl =
-        getUrlParam("headimgurl") ||
-        "https://thirdwx.qlogo.cn/mmopen/vi_32/Ic8RUpPQplJRrMJ2bbfKK64XgjhjC3hlJyvED2nHtGibJTs9323F6tg7QjMyian8ibIgAbU1iawGUswM5mhuT56v6A/132";
-      const nickname = getUrlParam("nickname") || "谢衣之徒";
-      const openid = getUrlParam("openid") || "ozq9nwYWj8vQ3Gj3abjAh3myDnrI1";
-
-      const params = {
-        headimgurl,
-        nickname: decodeURI(nickname),
-        openid,
-      };
-      setWechatInfo(params);
-    },
-
-    // 初始化微信 js sdk
-    initWeiXinJSSDK() {},
+    
   },
 };
 </script>
 
 <style>
 #app {
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f9f9f9;
+  /* background: -webkit-linear-gradient(top,#001A81,#010109);  */
+  background: #010109; 
+  overflow: hidden;
+  font-size: 36px;
 }
 </style>
