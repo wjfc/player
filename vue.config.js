@@ -26,6 +26,10 @@ module.exports = {
     open: true,
     https: true,
     proxy: {        // 根据实际项目做接口代理
+      "/jscnCloud": {
+        target: "http://192.168.1.188:8005",
+        changeOrigin: true
+      },
       "/shoudong": {
         target: "http://192.168.1.248/",
         changeOrigin: true

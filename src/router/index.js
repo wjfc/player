@@ -12,6 +12,10 @@ const routes = [
     path: "/index",
     component: () => import('@/pages/index/Index.vue'),
   },
+  {
+    path: "/videoList",
+    component: () => import('@/pages/index/VideoList.vue'),
+  },
 ];
 
 const router = new VueRouter({

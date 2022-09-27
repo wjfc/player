@@ -5,7 +5,7 @@
         <swiper-slide
           v-for="(item, i) in areaList"
           :key="item.value"
-          @click.native="handleCityClick(i)"
+          @click.native="handleCityClick(i, item)"
         >
           <div class="city-item" :class="{ active: i === parentActive }">
             {{ item.label }}
@@ -81,6 +81,9 @@ export default {
   },
 
   mounted() {
+    let s = new URLSearchParams(window.location.search);
+    let sn = s.get("sn");
+    this.sn = sn;
     this.getClients();
     setInterval(() => {
       this.updateClients();
@@ -100,10 +103,10 @@ export default {
     async getAreasJson() {
       const { data } = await getAreas();
       let areaJson = data;
-      areaJson.forEach((p) => {
+      areaJson.forEach((p, pindex) => {
         p.label = p.name;
         p.value = p.code;
-        p.children.forEach((child) => {
+        p.children.forEach((child, cindex) => {
           child.label = child.name;
           child.value = child.code;
           child.SN = child.sn || "";
@@ -119,10 +122,21 @@ export default {
             child.liveUrl = "";
             child.live = false;
           }
+          if (child.SN && child.SN === this.sn) {
+            console.log('======')
+            console.log(pindex,cindex)
+            this.parentActive = pindex;
+            this.liveActive = cindex;
+          }
         });
       });
       this.areaList = areaJson;
-      this.handleLiveClick(0, this.areaList[0].children[0], this.areaList);
+      this.handleLiveClick(
+        this.liveActive,
+        this.areaList[this.parentActive].children[this.liveActive],
+        this.areaList
+      );
+      this.swiper.slideTo(this.parentActive);
     },
 
     updatAreaListLiveStatus() {
@@ -162,7 +176,7 @@ export default {
 
     handleLiveClick(i, item, areaList) {
       this.liveActive = i;
-      this.$emit("handleClick",item.SN, areaList);
+      this.$emit("handleClick", item.SN, areaList);
     },
   },
 };
@@ -244,7 +258,7 @@ export default {
       }
 
       &.error {
-         background-image: url("~@/assets/images/live-error.png");
+        background-image: url("~@/assets/images/live-error.png");
       }
 
       &.active {

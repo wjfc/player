@@ -6,6 +6,7 @@
         <CommonWebRtcPlayer
           v-if="playUrl && isRemoting"
           :playUrl="playUrl"
+          ref="cwrPlayer"
         ></CommonWebRtcPlayer>
       </div>
       <div class="close" @click="closeRemote" v-show="isRemoting">

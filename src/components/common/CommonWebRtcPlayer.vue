@@ -1,5 +1,14 @@
 <template>
-  <video id="webrtc-player" ref="webRtcPlayer" controls autoplay></video>
+  <div class="webrtc-player-wrapper">
+    <video
+      class="webrtc-player"
+      id="webrtc-player"
+      ref="webRtcPlayer"
+      controls
+      autoplay
+    ></video>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
@@ -38,6 +47,24 @@ export default {
       };
 
       this.player = new window.JSWebrtc.Player(this.playUrl, options);
+
+    //  this.$nextTick(() => {
+    //    setTimeout(() => {
+    //     this.fullPlay();
+    //   }, 3000)
+
+    //   setTimeout(() => {
+    //     this.exitFullPlay();
+    //   }, 6000)
+    //  })
+    },
+
+    fullPlay() {
+      document.getElementById("webrtc-player").requestFullscreen();
+    },
+
+    exitFullPlay() {
+      document.getElementById("webrtc-player").exitFullscreen();
     },
 
     onPlay() {
@@ -52,9 +79,15 @@ export default {
 </script>
 
 <style scoped lang="less">
-#webrtc-player {
-  display: block;
+.webrtc-player-wrapper {
+  position: relative;
   width: 100%;
   height: 100%;
+
+  .webrtc-player {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 }
 </style>
